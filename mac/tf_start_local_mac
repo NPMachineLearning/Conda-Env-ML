@@ -1,10 +1,13 @@
 #!/bin/sh
 
-# get conda base location
+# Get conda base location
 CONDA_BASE=$(conda info --base)
 
-# get current shell directory (working directory)
+# Get current shell directory (working directory)
 CWD=$(dirname "$BASH_SOURCE")
+
+# Make sure we are working at this directory
+cd $CWD
 
 # echo information
 echo "Conda base: $CONDA_BASE"
@@ -14,13 +17,13 @@ echo "Current working directory: $CWD"
 source "$CONDA_BASE/etc/profile.d/conda.sh"
 
 # activate conda environment
-conda activate $CWD/env
+conda activate ./env
 
 # Install jupyter_http_over_ws required for colab local connect
 pip install --upgrade jupyter_http_over_ws>=0.0.7
 
 # Install tensorflow and tensorflow-hub for machine learning, skip automatically if installed
-pip install --upgrade tensorflow tensorflow-hub
+# pip install --upgrade tensorflow tensorflow-hub
 
 # Start jupyter_http_over_ws follow google colab local connect instruction
 jupyter serverextension enable --py jupyter_http_over_ws
