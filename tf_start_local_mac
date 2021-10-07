@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# get conda base location
+CONDA_BASE=$(conda info --base)
+
+# get current shell directory (working directory)
+CWD=$(dirname "$BASH_SOURCE")
+
+# echo information
+echo "Conda base: $CONDA_BASE"
+echo "Current working directory: $CWD"
+
+# activate conda shell
+source "$CONDA_BASE/etc/profile.d/conda.sh"
+
+# activate conda environment
+conda activate $CWD/env
+
+# Install jupyter_http_over_ws required for colab local connect
+pip install --upgrade jupyter_http_over_ws>=0.0.7
+
+# Install tensorflow and tensorflow-hub for machine learning, skip automatically if installed
+pip install --upgrade tensorflow tensorflow-hub
+
+# Start jupyter_http_over_ws follow google colab local connect instruction
+jupyter serverextension enable --py jupyter_http_over_ws
+
+# Start jupyter notebook follow google colab local connect instruction
+jupyter notebook --NotebookApp.allow_origin='https://colab.research.google.com' --port=8888 --no-browser
+
+# Press Control + c on keyboard to shutdown or close terminal
+
+echo "!!!!!!!! You can close terminal now !!!!!!!!!"
+$SHELL

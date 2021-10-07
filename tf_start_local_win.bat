@@ -8,7 +8,7 @@ CALL conda activate .\env
 CALL pip install --upgrade jupyter_http_over_ws>=0.0.7
 
 :: Install tensorflow and tensorflow-hub for machine learning, skip automatically if installed
-CALL pip install tensorflow tensorflow-hub
+CALL pip install --upgrade tensorflow tensorflow-hub
 
 :: Start jupyter_http_over_ws follow google colab local connect instruction
 CALL jupyter serverextension enable --py jupyter_http_over_ws
