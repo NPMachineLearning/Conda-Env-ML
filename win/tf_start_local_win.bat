@@ -1,6 +1,9 @@
 :: To start miniconda command line. Change this path to activate.bat in your installed miniconda location
 CALL D:\miniconda3\Scripts\activate.bat
 
+:: Make sure we are working at this batch file directory
+CALL cd %CD%
+
 :: Activate conda environment. Changable depend on how did you create miniconda environment
 CALL conda activate .\env
 
@@ -8,7 +11,7 @@ CALL conda activate .\env
 CALL pip install --upgrade jupyter_http_over_ws>=0.0.7
 
 :: Install tensorflow and tensorflow-hub for machine learning, skip automatically if installed
-CALL pip install --upgrade tensorflow tensorflow-hub
+::CALL pip install --upgrade tensorflow tensorflow-hub
 
 :: Start jupyter_http_over_ws follow google colab local connect instruction
 CALL jupyter serverextension enable --py jupyter_http_over_ws
