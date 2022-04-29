@@ -199,4 +199,5 @@ dependencies:
     - urllib3==1.26.7
     - werkzeug==2.0.2
     - wrapt==1.12.1
+    - gdown==4.4.0
 prefix: /Users/Nelson/Desktop/Conda-Env-ML/mac/env
